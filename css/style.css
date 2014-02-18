@@ -1,0 +1,37 @@
+body {
+	margin: 1%;
+}
+
+.screen {
+	float: left;
+	width: 44%;
+}
+
+.video {
+	float: right;
+	width: 54%;
+}
+
+.chat {
+	clear: both;
+	width: 100%;
+	max-height: 150px;
+	overflow: scroll;
+}
+
+.chat input {
+	width: 400px;
+	margin: 3px;
+}
+
+#history {
+	background-color: #eee;
+}
+
+#history td {
+	min-width: 150px;
+}
+
+#history .info {
+	color: #aaa;
+}

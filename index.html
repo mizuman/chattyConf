@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webRTC Webinar</title>
+
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+	<h1>WebRTC Webinar / Chatty Conf</h1>
+
+	<div class="screen">
+		<div>
+			<h4>Projector</h4>
+			<img src="./img/Projector.png" height="300" width="400">
+		</div>
+	</div>
+
+	<div class="video">
+		<div>
+			<h4>Speaker</h4>
+			<img src="./img/Speaker.png" height="200" width="300">
+		</div>
+
+		<div>
+			<h4>Listener</h4>
+			<img src="./img/Listener.png" height="90" width="120">
+			<img src="./img/Listener.png" height="90" width="120">
+			<img src="./img/Listener.png" height="90" width="120">
+		</div>
+	</div>
+
+	<div class="chat">
+		<h4>Chat</h4>
+		<input type="text" id="message" placeholder="message" autofocus>
+		<button id="send-message">送信</button>
+		<div id="history">
+			<table>
+				<tr class="info">
+					<td align="right"><b>Information</b> : </td>
+					<td>welcome to WebRTC Webinar!</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="system">
+		<h4>System</h4>
+			<div id="connectId"></div>
+			<p>
+				Your Peerid: <span id="my-id"></span><br>
+				Connection id: <span id="their-id"></span>
+			</p>
+			<div>
+				<label for="contactlist">チャット可能なPeerID：</label>
+				<select id="contactlist" name="contact"></select>
+				<button id="make-connection">接続</button>
+			</div>
+			<p>
+				create/join room
+				<input type="text" id="roomid" placeholder="room">
+				<input type="text" id="username" placeholder="name">
+				<button id="make-room">作成/参加</button>
+			</p>
+	</div>
+
+
+	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="https://skyway.io/dist/0.3/peer.js"></script>
+	<script src="./js/script.js"></script>
+</body>
+</html>
