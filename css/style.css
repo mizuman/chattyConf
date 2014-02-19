@@ -15,11 +15,14 @@ body {
 .video img {
 	height: 90px;
 	width: 120px;
+	vertical-align: top;
+	margin: 1px;
 }
 
 .video video {
 	height: 90px;
 	width: 120px;
+	margin: 1px;
 }
 
 .chat {

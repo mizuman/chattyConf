@@ -5,6 +5,7 @@ var APIKEY = '41c2d0fa-97b8-11e3-9d13-25b648c02544';
 
 // Compatibility
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 // window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 // ユーザーリスト
@@ -12,7 +13,8 @@ var userList = [];	// オンラインのpeer id
 var chatList = [];	// 接続中のpeer id
 
 //Callオブジェクト
-var existingCall;
+var existingCall = [];
+window.remoteStream = [];
 
 // ユーザ名をランダムに生成
 var namePrefix = 'chatty-';
@@ -26,7 +28,8 @@ window.onload = function onLoad() {
 
 	// メディアストリームを取得する
 	navigator.getUserMedia({audio: true, video: true}, function(stream){
-		$('#my-video').prop('src', URL.createObjectURL(stream));
+		// $('#my-video').prop('src', URL.createObjectURL(stream));
+		addVideo(stream,userName);
 		window.localStream = stream;
 	}, function(){
 		// getUserMedia失敗時の処理
@@ -131,24 +134,34 @@ function connect(peerid){
 	}
 }
 
+function addVideo(stream,id) {
+	var item = '<video id="videoid-' +  id + '" height="90" src="' + URL.createObjectURL(stream) + '" autoplay></video>';
+
+	$("#video-listener").prepend(item);
+}
+
 function mediaChannelEvent(call) {
+
+
+
 	// すでに接続中の場合はクローズする
-	if (existingCall) {
-		existingCall.close();
-	}
+	// if (existingCall) {
+	// 	existingCall.close();
+	// }
+
+	// Callオブジェクトを保存
+	existingCall[existingCall.length] = call;
 
 	// 相手からのメディアストリームを待ち受ける
-	call.on('stream', function(stream){
-		$('#their-video').prop('src', URL.createObjectURL(stream));
+	existingCall[existingCall.length - 1].on('stream', function(stream){
+		// $('#their-video').prop('src', URL.createObjectURL(stream));
+		addVideo(stream,call.peer);
+		remoteStream[remoteStream.length] = stream;
 	});
 
 	call.on('close', function(){
 
 	});
-
-	// Callオブジェクトを保存
-	existingCall = call;
-
 }
 
 function dataChannelEvent(conn){
