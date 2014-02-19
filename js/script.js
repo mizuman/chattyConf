@@ -3,9 +3,16 @@
 // SkyWay API Key for mizuman.github.io
 var APIKEY = '41c2d0fa-97b8-11e3-9d13-25b648c02544';
 
+// Compatibility
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+// window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
 // ユーザーリスト
 var userList = [];	// オンラインのpeer id
-var chatList = [];	// 接続中のpeer id	
+var chatList = [];	// 接続中のpeer id
+
+//Callオブジェクト
+var existingCall;
 
 // ユーザ名をランダムに生成
 var namePrefix = 'chatty-';
@@ -16,6 +23,14 @@ var userName = namePrefix + 'user' + Math.floor(Math.random() * 100);
 var peer;
 
 window.onload = function onLoad() {
+
+	// メディアストリームを取得する
+	navigator.getUserMedia({audio: true, video: true}, function(stream){
+		$('#my-video').prop('src', URL.createObjectURL(stream));
+		window.localStream = stream;
+	}, function(){
+		// getUserMedia失敗時の処理
+	});
 
 	var param = GetQueryString();
 	if(param && param.roomid) {
@@ -37,6 +52,12 @@ window.onload = function onLoad() {
 
 	peer.on('connection', function(conn){
 		dataChannelEvent(conn);
+	});
+
+	// 相手からのコールを受信したら自身のメディアストリームをセットして返答
+	peer.on('call', function(call){
+		call.answer(window.localStream);
+		mediaChannelEvent(call);
 	});
 
 	peer.on('error', function(err){
@@ -110,6 +131,26 @@ function connect(peerid){
 	}
 }
 
+function mediaChannelEvent(call) {
+	// すでに接続中の場合はクローズする
+	if (existingCall) {
+		existingCall.close();
+	}
+
+	// 相手からのメディアストリームを待ち受ける
+	call.on('stream', function(stream){
+		$('#their-video').prop('src', URL.createObjectURL(stream));
+	});
+
+	call.on('close', function(){
+
+	});
+
+	// Callオブジェクトを保存
+	existingCall = call;
+
+}
+
 function dataChannelEvent(conn){
 	peerConn[peerConn.length] = conn;
 	$('#their-id').append(conn.peer.slice(namePrefix.length));
@@ -180,6 +221,17 @@ $(function(){
 		connect($('#contactlist').val());
 	});
 
+	// 相手に接続
+	$('#make-call').click(function(){
+		var call = peer.call($('#contactlist').val(), window.localStream);
+		mediaChannelEvent(call);
+	});
+
+	// 切断
+	$('#end-call').click(function(){
+		existingCall.close();
+	});
+
 	// send message
 	$('#send-message').click(function(event) {
 		sendMsg('chat', $('#message').val());
@@ -208,6 +260,6 @@ $(function(){
 		}
 	});
 
-    setInterval(getUserList, 2000);
+	setInterval(getUserList, 2000);
 
 })
