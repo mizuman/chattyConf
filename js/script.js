@@ -135,9 +135,9 @@ function connect(peerid){
 }
 
 function addVideo(stream,id) {
-	var item = '<video id="videoid-' +  id + '" height="90" src="' + URL.createObjectURL(stream) + '" autoplay></video>';
+	var item = '<div class="userarea"><video id="videoid-' +  id.slice(namePrefix.length) + '" src="' + URL.createObjectURL(stream) + '" autoplay></video><span>' + id.slice(namePrefix.length) + '</span><div>';
 
-	$("#video-listener").prepend(item);
+	$("#video-listener").append(item);
 }
 
 function mediaChannelEvent(call) {
