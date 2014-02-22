@@ -38,11 +38,14 @@ body {
 
 #workarea {
 	clear: both;
+	height: 340px;
 }
 
 #history {
 	float: left;
 	width: 30%;
+	height: 100%;
+	overflow: scroll;
 }
 
 #history td {
@@ -52,17 +55,19 @@ body {
 #history table {
 	color: #aaa;
 	background-color: #F8F8F8;
+	max-height: 100%;
 }
 
 #minutes {
 	float: left;
 	width: 70%;
+	height: 100%;
 }
 
 #minutes textarea {
 	float: left;
 	width: 50%;
-	height: 180px;
+	height: 100%;
 	margin-bottom: 15px;
 	display: block;
 	color: #555;
@@ -76,7 +81,7 @@ body {
 #minutes div {
 	float: left;
 	width: 50%;
-	height: 180px;
+	height: 100%;
 	overflow: scroll;
 }
 

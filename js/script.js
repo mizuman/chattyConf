@@ -251,12 +251,31 @@ $(function(){
 		$('#message').val('');
 
 	});
+
+	var markdown_minutes = document.getElementById('markdown-minutes');
+	var html_minutes = document.getElementById('html-minutes');
+	var updateHTMLMinutes = function(e) {
+		$('#markdown-minutes').get(0).value += $('#message').val() + '\n';
+		// textArea2.value = string;
+		// $("#minutes").html(textArea2.value);
+    	$("#html-minutes").html(marked(markdown_minutes.value));        
+	};
+
 	$('#message').keypress( function ( e ) {
 		if ( e.which == 13 ) {
 			sendMsg('chat', $('#message').val());
+			if($("#check-minutes").prop('checked')) {
+				// $('#markdown-minutes').get(0).value += $('#message').val() + '\n';
+				updateHTMLMinutes();
+			}
 			$('#message').val('');
 		}
 	});
+
+	markdown_minutes.onkeyup = function() {
+		// html_minutes.html(marked(markdown_minutes.value));
+    	$("#html-minutes").html(marked(markdown_minutes.value));        
+	};
 
 	// create private room
 	$('#make-room').click(function(event) {
