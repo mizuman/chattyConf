@@ -8,8 +8,7 @@ body {
 }
 
 .video {
-	float: right;
-	width: 54%;
+	height: 90px;
 }
 
 .video img {
@@ -21,8 +20,8 @@ body {
 
 .video video {
 	height: 90px;
-	width: 120px;
 	margin: 1px;
+	float: left;
 }
 
 .chat {
@@ -37,14 +36,85 @@ body {
 	margin: 3px;
 }
 
+#workarea {
+	clear: both;
+}
+
 #history {
-	background-color: #eee;
+	float: left;
+	width: 30%;
 }
 
 #history td {
-	min-width: 150px;
+	min-width: 100px;
 }
 
-#history .info {
+#history table {
 	color: #aaa;
+	background-color: #F8F8F8;
+}
+
+#minutes {
+	float: left;
+	width: 70%;
+}
+
+#minutes textarea {
+	float: left;
+	width: 50%;
+	height: 180px;
+	margin-bottom: 15px;
+	display: block;
+	color: #555;
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 14px;
+	border-color: rgb(217,217,217);
+	background-color: #fdfdfd;
+}
+
+#minutes div {
+	float: left;
+	width: 50%;
+	height: 180px;
+	overflow: scroll;
+}
+
+#system {
+	clear: both;
+}
+
+.userarea {
+	float: left;
+	width: 130px;
+	height: 90px;
+}
+
+.userarea span{
+	position: absolute;
+	margin: -2px;
+	background-color: #555;
+	color: #eee;
+	padding: 2px;
+	opacity: 0.8;
+}
+
+.userarea video{
+	position: absolute;
+}
+
+.checkbox {
+	width: 115px;
+}
+
+.checkbox input[type="checkbox"] {
+	margin-left: 0px;
+}
+
+.input-group {
+	margin: 4px;
+}
+
+.input-group input[type="text"] {
+	width: 300px;
 }

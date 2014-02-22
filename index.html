@@ -17,33 +17,21 @@
 </head>
 <body>
 
-	<h1>WebRTC Webinar / Chatty Conf</h1>
+	<h4>WebRTC Webinar / Chatty Conf</h4>
 
-	<div class="screen">
-		<div>
-			<h4>Projector</h4>
-			<img src="./img/Projector.png" height="300" width="400">
-		</div>
+	<div class="video" id="video-listener">
 	</div>
 
-	<div class="video">
-		<div>
-			<h4>Speaker</h4>
-			<img src="./img/Speaker.png" height="200" width="300">
-		</div>
+	<div class="input-group col-lg-6">
+		<span class="input-group-addon checkbox">
+			<label><input type="checkbox">Minutes</label>
+		</span>
+		<input type="text" class="form-control" id="message">
+	</div><!-- /input-group -->
 
-		<div id="video-listener">
-			<img src="./img/Listener.png" height="90" width="120">
-			<img src="./img/Listener.png" height="90" width="120">
-			<img src="./img/Listener.png" height="90" width="120">
-		</div>
-	</div>
-
-	<div class="chat">
-		<h4>Chat</h4>
-		<input type="text" id="message" placeholder="message" autofocus>
-		<button id="send-message">送信</button>
+	<div id="workarea">
 		<div id="history">
+			<h4>History</h4>
 			<table>
 				<tr class="info">
 					<td align="right"><b>Information</b> : </td>
@@ -51,9 +39,14 @@
 				</tr>
 			</table>
 		</div>
+		<div id="minutes" class="rp-section-content">
+			<h4>Minutes</h4>
+			<textarea id="demoStringInput"></textarea>
+			<div id="html-minutes">
+			</div>
+		</div>
 	</div>
-
-	<div class="system">
+	<div id="system">
 		<h4>System</h4>
 			<div id="connectId"></div>
 			<p>
