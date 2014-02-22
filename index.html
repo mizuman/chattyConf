@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>webRTC Webinar</title>
+	<title>ChattyConf</title>
 
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
@@ -17,21 +17,20 @@
 </head>
 <body>
 
-	<h4>WebRTC Webinar / Chatty Conf</h4>
+	<h4>ChattyConf</h4>
 
 	<div class="video" id="video-listener">
 	</div>
 
 	<div class="input-group col-lg-6">
 		<span class="input-group-addon checkbox">
-			<label><input type="checkbox">Minutes</label>
+			<label><input type="checkbox" id="check-minutes">Minutes</label>
 		</span>
-		<input type="text" class="form-control" id="message">
+		<input type="text" class="form-control" id="message" autofocus>
 	</div><!-- /input-group -->
 
 	<div id="workarea">
 		<div id="history">
-			<h4>History</h4>
 			<table>
 				<tr class="info">
 					<td align="right"><b>Information</b> : </td>
@@ -40,23 +39,25 @@
 			</table>
 		</div>
 		<div id="minutes" class="rp-section-content">
-			<h4>Minutes</h4>
-			<textarea id="demoStringInput"></textarea>
+			<textarea id="markdown-minutes" placeholder="# Minutes"></textarea>
 			<div id="html-minutes">
 			</div>
 		</div>
 	</div>
+
 	<div id="system">
 		<h4>System</h4>
+<!-- 
 			<div id="connectId"></div>
 			<p>
 				Your Peerid: <span id="my-id"></span><br>
 				Connection id: <span id="their-id"></span>
 			</p>
+ -->			
 			<div>
 				<label for="contactlist">チャット可能なPeerID：</label>
 				<select id="contactlist" name="contact"></select>
-				<button id="make-connection">接続</button>
+				<!-- <button id="make-connection">接続</button> -->
 				<button id="make-call">ビデオチャット</button>
 			</div>
 			<p>
@@ -71,6 +72,8 @@
 	<script src="./js/jquery-2.1.0.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="https://skyway.io/dist/0.3/peer.js"></script>
+	<script src="https://rawgithub.com/chjj/marked/master/lib/marked.js" type="text/javascript"></script>
+
 	<script src="./js/script.js"></script>
 </body>
 </html>
