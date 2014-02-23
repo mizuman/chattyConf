@@ -22,12 +22,25 @@
 	<div class="video" id="video-listener">
 	</div>
 
-	<div class="input-group col-lg-6">
+	<div class="input-group">
 		<span class="input-group-addon checkbox">
 			<label><input type="checkbox" id="check-minutes">Minutes</label>
 		</span>
 		<input type="text" class="form-control" id="message" autofocus>
 	</div><!-- /input-group -->
+	<div class="btn-group">
+		<!-- <button id="authorizeButton"  class="btn btn-default rp-button rp-button-submit" disabled="true">Authorize</button> -->
+		<button id="demoAuthorizeButton" disabled="true" class="rp-button rp-button-submit btn btn-default">Authorize</button>
+
+		<!-- <button id="createNewDoc" class="btn btn-default rp-button rp-button-red" disabled="true">Create</button>
+		<button id="openExistingDoc" class="btn btn-default rp-button rp-button-submit" disabled="true">Open</button> -->
+
+		<button id="createNewDoc" class="rp-button rp-button-red btn btn-default">Create</button>
+        <button id="openExistingDoc" class="rp-button rp-button-submit btn btn-default">Open</button>
+
+		<!-- <button id="shareButton" class="btn btn-default rp-button rp-button-share" disabled="true">Share</button> -->
+		<button id="demoShareButton" class="rp-button rp-button-share btn btn-default">Share</button>
+	</div>
 
 	<div id="workarea">
 		<div id="history">
@@ -39,21 +52,15 @@
 			</table>
 		</div>
 		<div id="minutes" class="rp-section-content">
-			<textarea id="markdown-minutes" placeholder="# Minutes"></textarea>
+			<!-- <textarea id="markdown-minutes" placeholder="# Minutes"></textarea> -->
+			<textarea id="demoStringInput" placeholder="# Minutes"></textarea>
 			<div id="html-minutes">
 			</div>
 		</div>
 	</div>
 
 	<div id="system">
-		<h4>System</h4>
-<!-- 
-			<div id="connectId"></div>
-			<p>
-				Your Peerid: <span id="my-id"></span><br>
-				Connection id: <span id="their-id"></span>
-			</p>
- -->			
+		<h4>System</h4>		
 			<div>
 				<label for="contactlist">チャット可能なPeerID：</label>
 				<select id="contactlist" name="contact"></select>
@@ -69,11 +76,48 @@
 	</div>
 
 
+  <div id="leftContainer">
+
+<!--     <section id="demoUnauthorizedOverlay">
+      <div class="rp-section-content">
+      </div>
+    </section> -->
+
+    <section id="demoChooseDocument" class="disabled">
+      <div class="rp-section-content">
+      	edit file name
+        <input type="text" name="documentName" id="documentName" title="Change the file's name" style="margin-left: 5px;" value="" disabled="disabled" placeholder="...">
+      </div>
+    </section>
+
+<!--     <section id="demoShare" class="disabled">
+      <div class="rp-section-content" style="line-height: 30px;">
+      </div>
+    </section>
+
+    <section id="collabSections" class="disabled">
+
+      <section id="collabStringDemo" class="rp-greyRuledBottom" style="padding-bottom: 20px">
+        <div class="rp-section-content">
+        </div>
+      </section>
+    </section> -->
+  </div>
+
+	<script type="text/javascript" src="//www.google.com/jsapi"></script>
+	<script type="text/javascript" src="//apis.google.com/js/api.js"></script>
 	<script src="./js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="https://skyway.io/dist/0.3/peer.js"></script>
-	<script src="https://rawgithub.com/chjj/marked/master/lib/marked.js" type="text/javascript"></script>
-
+	<script src="https://rawgithub.com/chjj/marked/master/lib/marked.js"></script>
 	<script src="./js/script.js"></script>
+
+	<script src="./js/realtime-client-utils.js"></script>
+	<script src="./js/rtpg.js"></script>
+	<script src="./js/rtpg.string.js"></script>
+	<script src="./js/rtpg.collaborators.js"></script>
+	<script src="./js/rtpg.ui.js"></script>
 </body>
 </html>
