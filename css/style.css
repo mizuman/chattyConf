@@ -118,8 +118,19 @@ body {
 
 .input-group {
 	margin: 4px;
+	float: left;
 }
 
 .input-group input[type="text"] {
 	width: 300px;
+	margin-right: 8px;
+}
+
+.input-group button {
+	margin-left: 2px;
+}
+
+.btn-group {
+	float: left;
+	margin: 4px;
 }
